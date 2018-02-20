@@ -1,25 +1,176 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>br.com</groupId>
-  <artifactId>dailyutilities</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+	<groupId>br.com</groupId>
+	<artifactId>dailyutilities</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
-  <name>dailyutilities</name>
-  <url>http://maven.apache.org</url>
+	<name>dailyutilities</name>
+	<url>http://maven.apache.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+	<properties>
+		<!-- use UTF-8 for everything -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<java.version>1.8</java.version>
+		<jee.version>7.0</jee.version>
+		<servletApi.version>6.1.11</servletApi.version>
+		<spring.version>4.1.6.RELEASE</spring.version>
+
+		<springSecurity.version>4.0.2.RELEASE</springSecurity.version>
+		<springData.version>1.7.2.RELEASE</springData.version>
+		<hibernate.version>4.0.0.Final</hibernate.version>
+		<hibernateJpa.version>1.0.1.Final</hibernateJpa.version>
+		<hibernateAnnotations.version>3.5.6-Final</hibernateAnnotations.version>
+		<hibernateJavaAssist.version>3.12.1.GA</hibernateJavaAssist.version>
+		<hibernateValidator.version>5.1.3.Final</hibernateValidator.version>
+
+		<h2.version>1.4.187</h2.version>
+		<mysql.version>5.1.34</mysql.version>
+		<c3p0.version>0.9.1.2</c3p0.version>
+
+		<slf4j.version>1.7.10</slf4j.version>
+		<logback.version>1.1.2</logback.version>
+		<junit.version>4.11</junit.version>
+		<mockito.version>1.9.5</mockito.version>
+		<jayway.version>2.0.0</jayway.version>
+
+		<jjwt.version>0.6.0</jjwt.version>
+		<javaMail.version>1.4</javaMail.version>
+		<cglib.version>3.1</cglib.version>
+		<jodaTime.version>2.5</jodaTime.version>
+		<xstream.version>1.4.7</xstream.version>
+		<apacheCommonLang.version>2.6</apacheCommonLang.version>
+		<apacheCodec.version>1.9</apacheCodec.version>
+		<apacheXerces.version>2.10.0</apacheXerces.version>
+		<apacheXercesImpl.version>2.11.0</apacheXercesImpl.version>
+		<jackson.version>1.9.13</jackson.version>
+		<googleGson.version>2.3.1</googleGson.version>
+		<fasterxmlJackson.version>2.4.3</fasterxmlJackson.version>
+		<orgJson.version>20140107</orgJson.version>
+		<castor.version>1.3.1</castor.version>
+		<jasper-version>4.7.1</jasper-version>
+
+		<mavenCompilerPlugin.version>3.3</mavenCompilerPlugin.version>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Apache Commons -->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>${apacheCommonLang.version}</version>
+		</dependency>
+
+
+		<!-- Apache Codec -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>${apacheCodec.version}</version>
+		</dependency>
+
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+			<exclusions>
+				<!-- Exclude Commons Logging in favor of SLF4j -->
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+			<exclusions>
+				<!-- Exclude Commons Logging in favor of SLF4j -->
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- Spring Data JPA -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>${springData.version}</version>
+		</dependency>
+
+		<!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${springSecurity.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${springSecurity.version}</version>
+		</dependency>
+
+
+	</dependencies>
 </project>
